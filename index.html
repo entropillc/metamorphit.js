@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Metamorphit.js Demo</title>
+  <link rel="stylesheet" href="metamorphit.css">
+  <script src="jquery-1.8.0.js"></script>
+  <script src="metamorphit.js"></script>
+  <script>
+    $(function() {
+      var transitions = [
+        {
+          element: '#title',
+          effect: 'fade',
+          duration: 500,
+          pause: false
+        },
+        {
+          element: '#subtitle',
+          effect: 'slide',
+          delay: 1000,
+          duration: 500,
+          pause: true
+        },
+        {
+          element: '#note',
+          effect: 'slide',
+          delay: 0,
+          duration: 500,
+          pause: false
+        },
+        {
+          element: '#bullet-1',
+          effect: 'fade',
+          duration: 500,
+          pause: true
+        },
+        {
+          element: '#bullet-2',
+          effect: 'slide',
+          duration: 500,
+          pause: true
+        },
+        {
+          element: '#bullet-3',
+          effect: 'fade',
+          duration: 500,
+          pause: true
+        },
+        {
+          element: '<li>Bullet 4 - Dynamically Added!!</li>',
+          appendTo: 'ul',
+          effect: 'slide',
+          duration: 500,
+          pause: true
+        },
+        {
+          element: '<li>Bullet 5 - Also Dynamically Added!!</li>',
+          appendTo: 'ul',
+          effect: 'fade',
+          duration: 500,
+          pause: true
+        }
+      ];
+      
+      var metamorphit = $('#my-metamorphit')[0].metamorphit;
+      metamorphit.setTransitions(transitions);
+      metamorphit.start();
+      
+      var $window = $(window.addEventListener ? window : document.body);
+      $window.bind(!!('ontouchstart' in window) ? 'touchstart' : 'mousedown', function(evt) {
+        metamorphit.next();
+      });
+      $window.bind('keydown', function(evt) {
+        
+        // Left Arrow or Up Arrow
+        if (evt.keyCode === 37 || evt.keyCode === 38) metamorphit.previous();
+        
+        // Right Arrow or Down Arrow
+        else if (evt.keyCode === 39 || evt.keyCode === 40) metamorphit.next();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="mm-metamorphit" id="my-metamorphit">
+    <h1 id="title">Welcome!</h1>
+    <h4 id="subtitle">Click anywhere to advance to the next transition</h4>
+    <p id="note">NOTE: You can also use the Left and Up Arrow keys to jump back to the previous transition or the Right and Down arrow keys to advance to the next transition.</p>
+    <ul>
+      <li id="bullet-1">Bullet Point 1 (should appear automatically after the "NOTE" above)</li>
+      <li id="bullet-2">Bullet Point 2</li>
+      <li id="bullet-3">Bullet Point 3</li>
+    </ul>
+  </div>
+</body>
+</html>

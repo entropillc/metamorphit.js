@@ -1,0 +1,66 @@
+.mm-metamorphit {
+  visibility: hidden;
+}
+
+.mm-metamorphit.mm-initialized {
+  visibility: visible;
+}
+
+.mm-target {
+  visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform:   translate(0, 0);
+      -ms-transform:   translate(0, 0);
+       -o-transform:   translate(0, 0);
+          transform:   translate(0, 0);
+}
+
+.mm-target.mm-active {
+  visibility: visible;
+}
+
+.mm-target.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+     -moz-transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+      -ms-transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+       -o-transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+          transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.mm-target.mm-active.fade {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+     -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+       -o-transition-delay: 0s;
+          transition-delay: 0s;
+}
+
+.mm-target.slide {
+  opacity: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+     -moz-transform:   translate(-100%, 0);
+      -ms-transform:   translate(-100%, 0);
+       -o-transform:   translate(-100%, 0);
+          transform:   translate(-100%, 0);
+  -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease, visibility 0s linear 0.5s;
+     -moz-transition: opacity 0.5s ease,    -moz-transform 0.5s ease, visibility 0s linear 0.5s;
+      -ms-transition: opacity 0.5s ease,     -ms-transform 0.5s ease, visibility 0s linear 0.5s;
+       -o-transition: opacity 0.5s ease,      -o-transform 0.5s ease, visibility 0s linear 0.5s;
+          transition: opacity 0.5s ease,         transform 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.mm-target.mm-active.slide {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform:   translate(0, 0);
+      -ms-transform:   translate(0, 0);
+       -o-transform:   translate(0, 0);
+          transform:   translate(0, 0);
+  -webkit-transition-delay: 0s;
+     -moz-transition-delay: 0s;
+      -ms-transition-delay: 0s;
+       -o-transition-delay: 0s;
+          transition-delay: 0s;
+}
