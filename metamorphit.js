@@ -145,8 +145,20 @@ Metamorphit.prototype = {
     var self = this;
     
     window.setTimeout(function() {
+      self._isStopped = false;
       self.next();
     }, 500);
+  },
+
+  /**
+
+  */
+  reset: function() {
+    this._isStopped = true;
+    // remove mm-active class from all child elements
+    this.$element.find('.mm-active').removeClass('mm-active');
+    this._transitioning = false;
+    this._delaying = false;
   },
   
   /**
@@ -186,6 +198,7 @@ Metamorphit.prototype = {
     if (delay) {
       this._delaying = true;
       this._transitionDelayTimeout = window.setTimeout(function() {
+        if (self._isStopped) return;
         self._delaying = false;
         self._transitioning = true;
         
